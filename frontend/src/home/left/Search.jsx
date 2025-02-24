@@ -3,10 +3,10 @@ import { IoSearch } from "react-icons/io5";
 
 function Search() {
   return (
-    <div className="h-[10vh]">
+    <div className="h-[10vh] ">
       <div className="px-6 py-4">
         <form action="">
-          <div className="">
+          <div className="flex space-x-3">
             <label className=" border-[1px]border-grey-700 bg-slate-900 rounded-lg  flex items-center gap-2 w-[80%] p-3 ">
               <input
                 type="text"

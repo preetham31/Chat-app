@@ -1,7 +1,9 @@
 import React from "react";
-import Left from "./home/left/left";
-import Right from "./home/right/right";
+import Left from "./home/left/Left";
+import Right from "./home/right/Right";
 import Logout from "./home/left1/Logout";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -12,5 +14,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

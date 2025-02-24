@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import createTokenAndSaveCookie from "../jwt/generateToken.js";
+
 export const signup = async (req, res) => {
   try {
     const { fullname, email, password, confirmpassword } = req.body;
@@ -9,10 +10,11 @@ export const signup = async (req, res) => {
     }
     const user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({ message: "email already exists" });
     }
     //hashing the password
     const hashpassword = await bcrypt.hash(password, 10);
+
     const newUser = await new User({
       fullname: fullname,
       email: email,

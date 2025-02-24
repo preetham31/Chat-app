@@ -14,7 +14,7 @@ const User = () => {
           </div>
         </div>
         <div className="px-4 ">
-          <h1>Preetham </h1>
+          <h1 className="font-bold">Preetham </h1>
           <span>preetham@gmail.com</span>
         </div>
       </div>

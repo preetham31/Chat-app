@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Topbar() {
   return (
-    <div className="pl-5 pt-5 pb-3 h-[8vh]  flex space-x-4 bg-gray-900  hover:bg-gray-800 duration-300">
+    <div className="pl-5 pt-5  h-[12vh]  flex space-x-4 bg-gray-700  hover:bg-gray-600 duration-300">
       <div>
         <div className="avatar online">
           <div className="w-14 rounded-full">
