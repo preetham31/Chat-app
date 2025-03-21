@@ -7,7 +7,12 @@ import Login from "./components/Login";
 
 function App() {
   return (
-    <div className="flex h-screen">
+    // <div>
+    //   <Signup></Signup>
+    //   <Login></Login>
+    // </div>
+
+    <div className="flex h-screen overflow-hidden">
       <Logout></Logout>
       <Left></Left>
       <Right></Right>

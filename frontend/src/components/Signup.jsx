@@ -17,22 +17,31 @@ export default function Signup() {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-
     const userInfo = {
       name: data.name,
       email: data.email,
       password: data.password,
-      confirmpassword: data.confirmpassword,
+      confirmPassword: data.confirmpassword,
     };
+    console.log(data);
 
     axios
       .post("http://localhost:5001/user/signup", userInfo)
       .then((response) => {
         console.log(response.data);
+        if (response.data) {
+          alert("User registered successfully");
+        }
+        localStorage.setItem(
+          "messenger",
+          JSON.stringify(response.data.user),
+          console.log(response.data)
+        );
       })
       .catch((error) => {
-        console.log(error.response?.data || "An error occurred");
+        if (error.response) {
+          alert("Error : " + error.response.data.error);
+        }
       });
   };
 
@@ -115,7 +124,7 @@ export default function Signup() {
           />
         </label>
         {errors.confirmpassword && (
-          <span className="text-red-600 text-sm">
+          <span className="text-red-600 text-sm font-semibold">
             {errors.confirmpassword.message}
           </span>
         )}

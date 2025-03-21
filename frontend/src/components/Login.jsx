@@ -1,15 +1,38 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { IoMdChatboxes } from "react-icons/io";
+import axios from "axios";
 
 export default function Login() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+    console.log(data);
+
+    axios
+      .post("http://localhost:5001/user/login", userInfo)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.message === "User logged in successfully") {
+          alert("User logged in successfully");
+          localStorage.setItem("messenger", JSON.stringify(response.data.user));
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert("Error : " + error.response.data.error);
+        }
+      });
+  };
+
   return (
     <>
       <div>
@@ -48,11 +71,11 @@ export default function Login() {
               <input
                 type="text"
                 className="grow"
-                placeholder="Email"
-                {...register("Email", { required: true })}
+                placeholder="email"
+                {...register("email", { required: true })}
               />
             </label>
-            {errors.Email && (
+            {errors.email && (
               <span className="text-red-600 text-sm font-semibold">
                 This field is required
               </span>
@@ -75,10 +98,10 @@ export default function Login() {
                 type="password"
                 className="grow"
                 placeholder="Password"
-                {...register("Password", { required: true })}
+                {...register("password", { required: true })}
               />
             </label>
-            {errors.Password && (
+            {errors.password && (
               <span className="text-red-600 text-sm font-semibold">
                 This field is required
               </span>
